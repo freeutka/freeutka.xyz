@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6821702018706373"
-     crossorigin="anonymous"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6821702018706373" crossorigin="anonymous"></script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CloudQuack</title>
@@ -37,19 +36,63 @@
       cursor: pointer;
       font-size: 1rem;
     }
+    .inactive {
+      background-color: #aaa;
+      cursor: not-allowed;
+    }
+    .status-message {
+      margin-top: 20px;
+      color: red;
+      font-size: 1.2rem;
+      display: none;
+    }
   </style>
 </head>
 
 <body>
   <div class="button-container">
-    <button onclick="window.location.href='https://panel.freeutka.xyz/auth/register'">Register</button>
-    <button onclick="window.location.href='https://panel.freeutka.xyz/auth/login'">Login</button>
+    <button id="registerBtn" onclick="window.location.href='https://panel.freeutka.xyz/auth/register'">Register</button>
+    <button id="loginBtn" onclick="window.location.href='https://panel.freeutka.xyz/auth/login'">Login</button>
   </div>
   <main class="h-card" rel="author">
     <h1>Coming soon.</h1>
     <p class="p-note">...CloudQuack is still being created.</p>
-    <p class="p-note">But you can use the hosting, just click <a class="u-url" href="https://panel.freeutka.xyz/auth/register" rel="me">Register</a> or <a class="u-url" href="https://panel.freeutka.xyz/auth/login" rel="me">Login</a></p>
+    <p class="p-note">But you can use the hosting, just click Register or Login</p>
     Discord (News): <a class="u-url" href="https://discord.gg/wdDED7nVKv" rel="me">CloudQuack</a>
   </main>
+  
+  <div id="statusMessage" class="status-message">
+    Hosting is now inactive. Come back soon.
+  </div>
+
+  <script>
+    function checkServerAvailability() {
+      fetch('https://panel.freeutka.xyz', { method: 'HEAD' })
+        .then(response => {
+          if (response.ok) {
+            document.getElementById('registerBtn').disabled = false;
+            document.getElementById('loginBtn').disabled = false;
+            document.getElementById('registerBtn').classList.remove('inactive');
+            document.getElementById('loginBtn').classList.remove('inactive');
+            document.getElementById('statusMessage').style.display = 'none'; 
+          } else {
+            document.getElementById('registerBtn').disabled = true;
+            document.getElementById('loginBtn').disabled = true;
+            document.getElementById('registerBtn').classList.add('inactive');
+            document.getElementById('loginBtn').classList.add('inactive');
+            document.getElementById('statusMessage').style.display = 'block';  
+          }
+        })
+        .catch(error => {
+          document.getElementById('registerBtn').disabled = true;
+          document.getElementById('loginBtn').disabled = true;
+          document.getElementById('registerBtn').classList.add('inactive');
+          document.getElementById('loginBtn').classList.add('inactive');
+          document.getElementById('statusMessage').style.display = 'block';  
+        });
+    }
+
+    window.onload = checkServerAvailability;
+  </script>
 </body>
 </html>
