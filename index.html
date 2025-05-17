@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      background-color: #111;
+      color: #fff;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #timer {
+      font-size: 4rem;
+      font-weight: bold;
+      padding: 30px 60px;
+      border-radius: 16px;
+      background: rgba(0, 0, 0, 0.3);
+      box-shadow: 0 0 20px rgba(255, 140, 0, 0.4);
+      transition: all 0.4s ease;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    #timer:hover {
+      box-shadow: 0 0 40px rgba(255, 140, 0, 0.9), 0 0 80px rgba(255, 140, 0, 0.6);
+      background-color: rgba(255, 140, 0, 0.1);
+    }
+
+    #timer.hover-glitch:hover {
+      animation: glitch 0.3s infinite;
+    }
+
+    @keyframes glitch {
+      0% { transform: translate(0); }
+      25% { transform: translate(-1px, 1px); }
+      50% { transform: translate(1px, -1px); }
+      75% { transform: translate(-1px, -1px); }
+      100% { transform: translate(1px, 1px); }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="timer" class="hover-glitch">00:00:00</div>
+
+  <script>
+    function updateTimer() {
+      const target = new Date(Date.UTC(2025, 4, 17, 18, 0, 0));
+      const now = new Date();
+      const diff = Math.max(0, Math.floor((target - now) / 1000));
+
+      const hours = String(Math.floor(diff / 3600)).padStart(2, '0');
+      const minutes = String(Math.floor((diff % 3600) / 60)).padStart(2, '0');
+      const seconds = String(diff % 60).padStart(2, '0');
+
+      document.getElementById("timer").innerText = `${hours}:${minutes}:${seconds}`;
+    }
+
+    updateTimer();
+    setInterval(updateTimer, 1000);
+  </script>
+
+</body>
+</html>
