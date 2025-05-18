@@ -193,7 +193,7 @@
           card.innerHTML = `
             <h3>${name}</h3>
             <p>Status: ${maintenance_mode ? 'Maintenance' : 'Online'}</p>
-            <p>Servers: ${server_count}</p>
+            <p>Servers: ${server_count ? 'undefined' : '0'}</p>
             <p>Memory: ${memory} MB</p>
             <p>Disk: ${disk} MB</p>
           `;
