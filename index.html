@@ -1,323 +1,209 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6821702018706373" crossorigin="anonymous"></script>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Get free hosting for Minecraft, Python, and Discord bots. Easy to use in 2024. Start coding and hosting with the best free services today! CloudQuack.">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta property="og:title" content="CloudQuack - Free Hosting for Discord Bots, Minecraft & More" />
+  <meta property="og:description" content="Completely free hosting for Discord bots, Minecraft servers, Python projects and more." />
+  <meta property="og:image" content="https://cloudquack.pro/1.jpg" />
+  <meta property="og:url" content="https://cloudquack.pro/" />
   <title>CloudQuack</title>
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    :root {
+      --bg-dark: #141416;
+      --surface: #1e1e1e;
+      --primary: #ff8c00;
+      --perehod: #18181b;
+      --primary-dark: #e07e00;
+      --text-primary: #e0e0e0;
+      --text-secondary: #a1a1aa;
+      --accent: #7289da;
     }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; font-family: 'Inter', sans-serif; background: var(--bg-dark); color: var(--text-primary); }
+    body { display: flex; flex-direction: column; min-height: 100vh; }
+    header { background: var(--surface); padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 10; border-bottom: 1px solid #2a2a2e; }
+    .logo { font-size: 1.5rem; font-weight: 800; color: var(--primary); }
+    nav { display: flex; align-items: center; gap: 1rem; }
+    nav a { text-decoration: none; font-weight: 600; color: var(--text-primary); transition: color .3s; }
+    nav a:hover { color: var(--primary); }
+    .btn { padding: .75rem 1.5rem; border: none; border-radius: 6px; font-size: .95rem; font-weight: 600; cursor: pointer; transition: background .3s, transform .3s; min-width: 120px; text-align: center; }
+    .btn-primary { background: var(--primary); color: var(--bg-dark); }
+    .btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); }
+    .btn-secondary { background: transparent; border: 2px solid var(--primary); color: var(--text-primary); }
+    .btn-secondary:hover { background: var(--primary); color: var(--bg-dark); }
+    section { padding: 4rem 2rem; }
+    .hero { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; background: linear-gradient(135deg, var(--surface), var(--bg-dark)); }
+    .hero h1 { font-size: 3rem; color: var(--primary); margin-bottom: 1rem; }
+    .hero p { font-size: 1.1rem; max-width: 600px; color: var(--text-secondary); margin-bottom: 2rem; }
+    .features { background: var(--bg-dark); }
+    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; max-width: 1200px; margin: auto; }
+    .feature-card { background: var(--surface); border-radius: 8px; padding: 2rem; box-shadow: 0 4px 10px rgba(0,0,0,0.5); text-align: center; transition: transform .3s; }
+    .feature-card:hover { transform: translateY(-5px); }
+    .feature-card i { font-size: 2.5rem; color: var(--primary); margin-bottom: 1rem; }
+    .feature-card h3 { margin-bottom: .5rem; }
+    .feature-card p { color: var(--text-secondary); font-size: .95rem; }
+    .status { background: var(--surface); }
+    .status h2 { text-align: center; color: var(--primary); margin-bottom: 2rem; }
+    .status-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1.5rem; max-width: 1000px; margin: auto; }
+    .status-card { background: var(--bg-dark); border: 1px solid var(--accent); border-radius: 8px; padding: 1.5rem; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+    .status-card h3 { font-size: 1.25rem; margin-bottom: .5rem; color: var(--text-primary); }
+    .status-card p { color: var(--text-secondary); font-size: .9rem; }
+    .extras { background: var(--bg-dark); }
+    .extras-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; max-width: 1200px; margin: auto; }
+    .extra-card { background: var(--surface); border-radius: 8px; padding: 2rem; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.3); transition: transform .3s; }
+    .extra-card:hover { transform: translateY(-4px); }
+    .extra-card i { font-size: 2rem; color: var(--accent); margin-bottom: 1rem; }
+    .extra-card h4 { margin-bottom: .5rem; }
+    .screenshots { background: var(--surface); text-align: center; }
+    .screenshots h2 { color: var(--primary); margin-bottom: 1.5rem; font-weight: 700; font-size: 2.5rem; letter-spacing: 1px; }
+    .gallery { display: flex; justify-content: center; flex-wrap: wrap; gap: 2rem; }
+    .gallery img { width: 60%; max-width: 600px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.5); transition: transform .3s; }
+    .gallery img:hover { transform: scale(1.05); }
+    .faq { background: var(--bg-dark); max-width: 800px; margin: auto; }
+    .faq h2 { color: var(--primary); margin-bottom: 1.5rem; font-size: 2rem; }
+    .faq-item { margin-bottom: 1rem; }
+    .faq-item h3 { cursor: pointer; }
+    .faq-item p { display: none; padding-left: 1rem; color: var(--text-secondary); }
+    footer { background: var(--surface); text-align: center; padding: 2rem 2rem 3rem; border-top: 1px solid #2a2a2e; }
+    footer p { margin-bottom: 1.5rem; }
+    .social { display: flex; justify-content: center; gap: 1.5rem; }
+    .social a { color: var(--text-secondary); font-size: 1.5rem; transition: color .3s; }
+    .social a:hover { color: var(--primary); }
 
-    body {
-      font-family: 'Arial', sans-serif;
-      background: #f8f9fa;
-      color: #333;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100%;
-      padding: 20px;
-      flex-direction: column;
-    }
+    #overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: var(--perehod);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.8s ease;
+  z-index: 9999;
+}
 
-    h1 {
-      font-size: 3rem;
-      color: #fff;
-      margin-bottom: 15px;
-      font-weight: bold;
-      padding: 10px 20px;
-      background: rgba(0, 0, 0, 0.6); 
-      border-radius: 8px;
-      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6); 
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); 
-    }
-
-    .container {
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      padding: 40px;
-      text-align: center;
-      max-width: 600px;
-      width: 100%;
-      margin-bottom: 40px;
-    }
-
-    .title {
-      font-size: 2.5rem;
-      color: #ff8c00;
-      margin-bottom: 20px; 
-      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); 
-    }
-
-    .description {
-      font-size: 1.1rem;
-      color: #444;
-      margin-top: 10px; 
-      margin-bottom: 20px; 
-      text-align: justify;
-      line-height: 1.6;
-      text-justify: inter-word;
-      padding: 0 10px;
-    }
-
-    .description strong {
-      font-weight: bold;
-      color: #333;
-    }
-
-    .discord-link {
-      color: #7289da;
-      text-decoration: none;
-      font-weight: bold;
-      margin-top: 10px; 
-      display: inline-block;
-      padding: 5px 0;
-    }
-
-    .discord-link:hover {
-      color: #5e74d4;
-    }
-
-    .button-container {
-      display: flex;
-      justify-content: center;
-      gap: 30px; 
-      margin-top: 30px; 
-    }
-
-    button {
-      padding: 15px 30px;
-      font-size: 1.1rem;
-      border: none;
-      border-radius: 8px;
-      background-color: #ca8465;
-      color: white;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      width: 180px; 
-    }
-
-    button:hover {
-      background-color: #c17856;
-      transform: scale(1.05);
-    }
-
-    button:disabled {
-      background-color: #bbb;
-      cursor: not-allowed;
-    }
-
-    .status-message {
-      color: red;
-      font-size: 1.2rem;
-      margin-top: 20px;
-      display: none;
-    }
-    
-    .footer {
-      margin-top: 40px;
-      font-size: 0.85rem; 
-      text-align: center;
-      color: rgba(255, 255, 255, 0.7); 
-    }
-
-    .footer a {
-      color: rgba(255, 255, 255, 0.7); 
-      text-decoration: none;
-      font-weight: normal; 
-    }
-
-    .footer a:hover {
-      color: rgba(255, 255, 255, 1); 
-    }
-
-    .footer {
-      color: #e0e0e0;
-    }
-
-    .screenshots {
-      background-color: #fff;
-      padding: 40px 20px;
-      margin-top: 40px;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      width: 100%;
-      max-width: 600px;
-    }
-
-    .screenshots h1 {
-      font-size: 2.5rem;
-      color: #ff8c00;
-      margin-bottom: 20px;
-      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); 
-    }
-
-    .screenshots-gallery {
-      display: flex;
-      justify-content: space-around;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-
-    .screenshots-gallery img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 8px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-      transition: transform 0.3s ease;
-    }
-
-    .screenshots-gallery img:hover {
-      transform: scale(1.05);
-    }
-
-    @media (prefers-color-scheme: dark) {
-      body {
-        background: #111;
-        color: #f1f1f1;
-      }
-
-      .container {
-        background: #1e1e1e;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-      }
-
-      .title {
-        color: #ff8c00;
-      }
-
-      .description {
-        color: #e0e0e0;
-      }
-
-      .discord-link {
-        color: #7289da;
-      }
-
-      button {
-        background-color: #ff8c00;
-      }
-
-      button:hover {
-        background-color: #e07e00;
-      }
-
-      .screenshots {
-        background-color: #1e1e1e;
-      }
-    }
-
-    .icon-link {
-      font-size: 24px; /* Уменьшаем размер иконок */
-      margin: 10px;
-      text-decoration: none;
-      color: #333;
-      transition: transform 0.2s;
-    }
-
-    .icon-link:hover {
-      transform: scale(1.2);
-    }
-
-    .footer-icons {
-      margin-top: 20px;
-    }
-
-    .footer-icons a {
-      margin: 0 10px;
-      color: #e0e0e0; /* Цвет иконок */
-      font-size: 18px;
-    }
-
-    .footer-icons a:hover {
-      color: #ff8c00; /* Цвет при наведении */
-    }
+#overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
   </style>
 </head>
-
 <body>
-  <div class="container">
-    <h1 class="title">CloudQuack</h1>
-    <p class="description">
-      «CloudQuack» is a completely free hosting platform that supports a wide range of services,
-      including Discord bot hosting, Minecraft server hosting, and various programming languages.
-      Whether you're building bots for Discord, hosting Minecraft games, or developing projects in languages
-      like Python, Java, and more, CloudQuack provides a reliable and easy-to-use solution for all your hosting
-      needs – at no cost.
-    </p>
-    <p>Join our community on <a class="discord-link" href="https://discord.gg/wdDED7nVKv" target="_blank">Discord</a></p>
+  <header>
+    <div class="logo">CloudQuack</div>
+    <nav>
+      <a href="#features">Features</a>
+      <a href="#status">Nodes</a>
+      <a href="#extras">Extras</a>
+      <a href="#screenshots">Screenshots</a>
+      <button class="btn btn-secondary" onclick="location.href='https://panel.cloudquack.pro/auth/login'">Login</button>
+      <button class="btn btn-primary" onclick="location.href='https://panel.cloudquack.pro/auth/register'">Sign Up</button>
+    </nav>
+  </header>
+  <section class="hero">
+    <h1>Free Hosting for Your Projects</h1>
+    <p>CloudQuack offers reliable, free hosting for Minecraft servers, Discord bots, and coding projects in Python, Java, and more. Join thousands of developers worldwide.</p>
+    <button id="getStartedBtn" class="btn btn-primary">Get Started</button>
+  </section>
+  <div id="overlay"></div>
+  <script>
+    const btn = document.getElementById('getStartedBtn');
+    const overlay = document.getElementById('overlay');
 
-    <div class="button-container">
-      <button id="registerBtn" onclick="window.location.href='https://panel.cloudquack.pro/auth/register'">Register</button>
-      <button id="loginBtn" onclick="window.location.href='https://panel.cloudquack.pro/auth/login'">Login</button>
+    btn.addEventListener('click', () => {
+      overlay.classList.add('active');
+
+      setTimeout(() => {
+        window.location.href = 'https://panel.cloudquack.pro/auth/register';
+      }, 800);
+    });
+  </script>
+  <section id="features" class="features">
+    <div class="features-grid">
+      <div class="feature-card">
+        <i class="fas fa-cubes"></i>
+        <h3>Container Hosting</h3>
+        <p>Spin up Docker environments for any language or framework in minutes.</p>
+      </div>
+      <div class="feature-card">
+        <i class="fab fa-discord"></i>
+        <h3>Discord Bots</h3>
+        <p>Deploy and manage your Discord bots without downtime.</p>
+      </div>
+      <div class="feature-card">
+        <i class="fa-solid fa-gamepad"></i>
+        <h3>Minecraft Servers</h3>
+        <p>Host your own Minecraft worlds with full control.</p>
+      </div>
+      <div class="feature-card">
+        <i class="fas fa-database"></i>
+        <h3>Databases</h3>
+        <p>Built-in PostgreSQL & Redis support for dynamic apps.</p>
+      </div>
     </div>
-
-    <div id="statusMessage" class="status-message">
-      Hosting is currently inactive. Please check back later.
+  </section>
+  <section id="status" class="status">
+    <h2>Nodes</h2>
+    <div class="status-grid" id="statusGrid">
     </div>
-  </div>
-
-  <div class="screenshots">
-    <h1 class="title"><center>Screenshots</center></h1>
-    <div class="screenshots-gallery">
-      <img src="1.jpg" alt="Screenshot 1">
-      <img src="2.jpg" alt="Screenshot 2">
-      <img src="3.jpg" alt="Screenshot 3">
+  </section>
+  <section id="extras" class="extras">
+    <h2 style="text-align:center; color:var(--primary); margin-bottom:2rem;">Extras</h2>
+    <div class="extras-grid">
+      <div class="extra-card">
+        <i class="fas fa-chart-line"></i>
+        <h4>Analytics</h4>
+        <p>Real-time usage stats and traffic insights.</p>
+      </div>
+      <div class="extra-card">
+        <i class="fas fa-life-ring"></i>
+        <h4>Support</h4>
+        <p>24/7 community support on Discord.</p>
+      </div>
     </div>
-  </div>
-
-  <footer class="footer">
-    <p>2025 by <a href="https://freeutka.xyz" target="_blank">freeutka</a></p>
-    <div class="footer-icons">
-      <a href="https://www.facebook.com/profile.php?id=61568461681016" class="icon-link" target="_blank"><i class="fa-brands fa-facebook"></i></a>
-      <a href="https://www.instagram.com/cloudquackxyz/" class="icon-link" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-      <a href="https://www.youtube.com/@CloudQuack" class="icon-link" target="_blank"><i class="fa-brands fa-youtube"></i></a>
-      <a href="https://x.com/cloudquackxyz" class="icon-link" target="_blank"><i class="fa-brands fa-twitter"></i></a>
-      <a href="https://www.reddit.com/user/CloudQuack/" class="icon-link" target="_blank"><i class="fa-brands fa-reddit"></i></a>
-      <a href="https://www.tiktok.com/@user9047427156680" class="icon-link" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
-      <a href="https://t.me/cloudquack" class="icon-link" target="_blank"><i class="fa-brands fa-telegram"></i></a>
-      <a href="https://discord.gg/wdDED7nVKv" class="icon-link" target="_blank"><i class="fa-brands fa-discord"></i></a>
-      <a href="https://github.com/freeutka" class="icon-link" target="_blank"><i class="fa-brands fa-github"></i></a>
+  </section>
+  <section id="screenshots" class="screenshots">
+    <h2 class="title">Screenshots</h2>
+    <div class="gallery">
+      <img src="/1.jpg" alt="Panel Dashboard" />
+      <img src="/2.jpg" alt="Server Overview" />
+      <img src="/3.jpg" alt="Bot Logs" />
     </div>
-  </footer>
-
-    <script>
-  //  function checkServerAvailability() {
-  //    fetch('https://api.desingfreeutka.workers.dev/')
-  //      .then(response => response.json())
-  //      .then(data => {
-  //        if (data.status === 'active') {
-  //          document.getElementById('registerBtn').disabled = false;
-  //          document.getElementById('loginBtn').disabled = false;
-  //          document.getElementById('registerBtn').classList.remove('inactive');
-  //          document.getElementById('loginBtn').classList.remove('inactive');
-  //          document.getElementById('statusMessage').style.display = 'none';  
-  //        } else {
-  //          document.getElementById('registerBtn').disabled = true;
-  //          document.getElementById('loginBtn').disabled = true;
-  //          document.getElementById('registerBtn').classList.add('inactive');
-  //          document.getElementById('loginBtn').classList.add('inactive');
-  //          document.getElementById('statusMessage').style.display = 'block';  
-  //        }
-  //      })
-  //      .catch(error => {
-  //        document.getElementById('registerBtn').disabled = true;
-  //        document.getElementById('loginBtn').disabled = true;
-  //        document.getElementById('registerBtn').classList.add('inactive');
-  //        document.getElementById('loginBtn').classList.add('inactive');
-  //        document.getElementById('statusMessage').style.display = 'block';  
-  //      });
-  //  }
-  //
-  //  window.onload = checkServerAvailability;
-    </script>
+  </section>
+  <script>
+    
+    async function fetchPanelStatus() {
+      try {
+        const res = await fetch('https://panel.cloudquack.pro/api/application/nodes', {
+          headers: {
+            'Authorization': 'Bearer ptla_lbIL8QWheeutkDc6R5iKB7V0Pn7Es82aU4CD0NaRDUm',
+            'Accept': 'application/json'
+          }
+        });
+        const { data: nodes } = await res.json();
+        const grid = document.getElementById('statusGrid');
+        grid.innerHTML = ''; 
+        nodes.forEach(node => {
+          const card = document.createElement('div');
+          card.className = 'status-card';
+          const { name, maintenance_mode, memory, disk, server_count } = node.attributes;
+          card.innerHTML = `
+            <h3>${name}</h3>
+            <p>Status: ${maintenance_mode ? 'Maintenance' : 'Online'}</p>
+            <p>Servers: ${server_count}</p>
+            <p>Memory: ${memory} MB</p>
+            <p>Disk: ${disk} MB</p>
+          `;
+          grid.appendChild(card);
+        });
+      } catch (e) {
+        document.getElementById('statusGrid').innerHTML = '<p style="color:var(--text-secondary)">Unable to fetch status.</p>';
+      }
+    }
+    fetchPanelStatus();
+  </script>
 </body>
 </html>
